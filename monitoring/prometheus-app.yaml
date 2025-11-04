@@ -11,6 +11,7 @@ spec:
     targetRevision: 65.0.0
     helm:
       releaseName: monitoring
+      skipCrds: false   # <-- Important: ensure CRDs are installed
       values: |
         grafana:
           adminUser: admin
@@ -26,11 +27,9 @@ spec:
             serviceMonitorSelectorNilUsesHelmValues: false
             retention: 7d
             scrapeInterval: 30s
-
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
-
   syncPolicy:
     automated:
       prune: true
