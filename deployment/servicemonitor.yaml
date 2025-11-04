@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nginx-servicemonitor
+  namespace: monitoring
+  labels:
+    release: monitoring   # must match your Prometheus release name
+spec:
+  selector:
+    matchLabels:
+      app: nginx          # label from your NGINX Service
+  namespaceSelector:
+    matchNames:
+      - default           # namespace where your NGINX app runs
+  endpoints:
+    - port: web           # name of the port in nginx service
+      interval: 15s
+      path: /metrics      # exporter endpoint (optional)
