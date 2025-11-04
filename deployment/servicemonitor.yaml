@@ -4,7 +4,7 @@ metadata:
   name: nginx-servicemonitor
   namespace: monitoring
   labels:
-    release: monitoring   # must match your Prometheus release name
+    release: monitoring   # must match Prometheus Helm release name
 spec:
   selector:
     matchLabels:
@@ -13,6 +13,6 @@ spec:
     matchNames:
       - default           # namespace where your NGINX app runs
   endpoints:
-    - port: web           # name of the port in nginx service
+    - port: metrics       # <-- must match the Service port name
       interval: 15s
-      path: /metrics      # exporter endpoint (optional)
+      path: /metrics      # exporter metrics endpoint
