@@ -26,7 +26,7 @@ spec:
             - name: nginx-metrics
               mountPath: /etc/nginx/conf.d
         - name: nginx-exporter
-          image: nginxinc/nginx-prometheus-exporter:0.11.0
+          image: nginx/nginx-prometheus-exporter:1.3.0
           args:
             - -nginx.scrape-uri=http://localhost:8080/stub_status
           ports:
