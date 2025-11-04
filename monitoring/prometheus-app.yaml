@@ -11,7 +11,7 @@ spec:
     targetRevision: 65.0.0
     helm:
       releaseName: monitoring
-      skipCrds: false   # <-- Important: ensure CRDs are installed
+      skipCrds: true   # <-- Important: ensure CRDs are installed
       values: |
         grafana:
           adminUser: admin
